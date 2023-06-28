@@ -1,27 +1,33 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "portblog/wsgi.py",
+      "src": "api/*.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "api/__handler__.py"
+    },
+    {
       "src": "/(.*)",
-      "dest": "portblog/wsgi.py"
+      "dest": "/project/index.html"
     }
-  ]
-},
-{
-"functions": {
-"api/post_list.py": {
-"maxDuration": 10
-},
-"api/post_detail.py": {
-"maxDuration": 10
-},
-"api/post_by_tag.py": {
-"maxDuration": 10
-}
-}
+  ],
+  "functions": {
+    "api/post_list.py": {
+      "runtime": "vercel-python@0.24.0",
+      "maxDuration": 10
+    },
+    "api/post_detail.py": {
+      "runtime": "vercel-python@0.24.0",
+      "maxDuration": 10
+    },
+    "api/post_by_tag.py": {
+      "runtime": "vercel-python@0.24.0",
+      "maxDuration": 10
+    }
+  }
 }
