@@ -11,4 +11,17 @@
       "dest": "portblog/wsgi.py"
     }
   ]
+},
+{
+"functions": {
+"api/post_list.py": {
+"maxDuration": 10
+},
+"api/post_detail.py": {
+"maxDuration": 10
+},
+"api/post_by_tag.py": {
+"maxDuration": 10
+}
+}
 }
