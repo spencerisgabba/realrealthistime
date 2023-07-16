@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
-
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 WSGI_APPLICATION = 'vercel_app.wsgi.app'
@@ -20,13 +20,18 @@ WSGI_APPLICATION = 'vercel_app.wsgi.app'
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-42dn3p0&2)msysr6it-zj-^@z!dxwi7f8hvs&p31w$v3k214yq'
-
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['*']
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgresql://postgres:postgres@localhost:5432/mysite',
+        conn_max_age=600)
+
+}
 
 # Application definition
 

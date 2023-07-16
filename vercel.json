@@ -1,14 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/*.py",
-      "use": "@vercel/python",
-      "config": {
-        "pip": "requirements.txt"
-      }
-    }
-  ],
+  "builds": [{
+    "src": "blog/wsgi.py",
+    "use": "@ardnt/vercel-python-wsgi",
+    "config": { "maxLambdaSize": "15mb" }
+  }],
   "routes": [
     {
       "src": "/api/(.*)",
