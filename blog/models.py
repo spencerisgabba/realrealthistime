@@ -15,8 +15,8 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    subtitle = models.CharField(max_length=200)
     slug = AutoSlugField(populate_from='title', unique=False)
+    subtitle = models.CharField(max_length=200)
     content = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag)
