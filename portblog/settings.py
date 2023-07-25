@@ -76,7 +76,14 @@ WSGI_APPLICATION = 'portblog.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ddg8u2etivktfb',                     
+        'USER': 'bziocssqzzdmmw',
+        'PASSWORD': '26cc402800dcf05d7bfb6a1a180cd1591c9295a1962e8291f236946ccf53036f',
+        'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
+        'PORT': '5432',                      # Set to empty string for default.
+    }
 }
 
 
